@@ -84,3 +84,26 @@ class Game extends React.Component {
 
 const root = document.getElementById('root');
 ReactDOM.render(<Game />, root);
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [0, 4, 8],
+    [2, 5, 8],
+    [2, 4, 6]
+  ]
+
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    let threeInARow = squares[a] && 
+          squares[a] === squares[b] && squares[a] === squares[b];
+
+    if (threeInARow) {
+      return squares[a];
+    }
+  }
+  return null;
+}
